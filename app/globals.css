@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-text-primary font-body relative min-h-screen overflow-x-hidden;
+  }
+
+  /* Hide default cursor on desktop screens > 768px */
+  @media (min-width: 768px) {
+    body, a, button, [role="button"], input, select, textarea, .cursor-hover {
+      cursor: none !important;
+    }
+  }
+
+  /* Thin ice-blue scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #08080C;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #00D4FF;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #7EC8E3;
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #00D4FF #08080C;
+  }
+}
+
+@layer utilities {
+  .glow-ice {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), 0 0 60px rgba(0, 212, 255, 0.1);
+  }
+  .text-glow {
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  }
+
+  /* Hide scrollbars on horizontally-scrolling filter rows */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes filmRoll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-film-roll {
+  animation: filmRoll 45s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Respect users who prefer reduced motion: kill infinite/looping animation
+   and heavy transitions, but keep the UI fully usable. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-film-roll {
+    animation: none !important;
+  }
+}

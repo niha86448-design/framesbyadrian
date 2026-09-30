@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 60" fill="none">
+  <g class="logo-mark" stroke="currentColor" stroke-width="2">
+    <path d="M6 18 V10 H14" stroke-linecap="round"/>
+    <path d="M34 10 H42 V18" stroke-linecap="round"/>
+    <path d="M6 34 V42 H14" stroke-linecap="round"/>
+    <path d="M34 42 H42 V34" stroke-linecap="round"/>
+    <circle cx="24" cy="26" r="3" fill="currentColor"/>
+  </g>
+  <text x="56" y="31" fill="currentColor" font-family="Playfair Display, serif" font-size="20" font-weight="700" letter-spacing="1">FRAMES</text>
+  <text x="56" y="45" fill="currentColor" font-family="Inter, sans-serif" font-size="10" font-weight="400" letter-spacing="3" opacity="0.8">BY ADRIAN</text>
+</svg>
