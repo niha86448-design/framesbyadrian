@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FramesByAdrian
 
-## Getting Started
+Photography & videography portfolio for Adrian — sports, weddings, corporate, music, and events. Galleries are powered live by Google Drive; the contact form delivers via Resend.
 
-First, run the development server:
+Built with Next.js 16 (App Router), React 19, Tailwind CSS, framer-motion, and react-three-fiber.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local   # then fill in the values
+npm run dev                  # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> Note: `npm run dev` is intentionally unoptimized (on-demand compilation, no minification).
+> For a realistic performance check, run the production build below — this is what Vercel serves.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment variables
 
-## Learn More
+See `.env.example`. Set these in Vercel → Project → Settings → Environment Variables for production.
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Purpose |
+| --- | --- |
+| `GOOGLE_DRIVE_API_KEY` | Server-only key that powers the photo/video galleries |
+| `RESEND_API_KEY` | Contact form email delivery ([resend.com](https://resend.com)) |
+| `CONTACT_TO_EMAIL` | Where enquiries are sent (default `framesbyaj@gmail.com`) |
+| `CONTACT_FROM_EMAIL` | Sender address (use `onboarding@resend.dev` until a domain is verified) |
+| `NEXT_PUBLIC_SITE_URL` | Public site URL, for SEO/social image resolution |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `app/` — App Router pages (`/`, `/photos`, `/videos`, `/contact`, `/invoice`) and API routes (`/api/drive`, `/api/contact`)
+- `components/` — UI and animation components
+- `config/driveFolders.ts` — maps gallery categories to Google Drive folder IDs
+- `lib/` — shared types and category lists
+- `content/about.ts` — founder bio content
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Hosted on [Vercel](https://vercel.com). Pushes to `main` deploy automatically.
